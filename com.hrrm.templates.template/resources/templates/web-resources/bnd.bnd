@@ -1,0 +1,7 @@
+-resourceonly: true
+
+-includeresource: \
+    WEB-CONTENT,\
+    OSGI-INF
+    
+Bundle-Version: 1.0.0.\${tstamp}

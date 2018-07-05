@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.hrrm.infrastructure.web.internal.WebApplicationFilter">
+  <implementation class="com.hrrm.infrastructure.web.internal.WebApplicationFilter"/>
+  <service scope="prototype">
+    <provide interface="javax.servlet.Filter"/>
+  </service>
+  <property name="osgi.http.whiteboard.filter.pattern" type="String" value="/*"/>
+  <property name="osgi.http.whiteboard.context.select" type="String" value="(osgi.http.whiteboard.context.name=com.ebase.eox.appcontent)"/>
+</scr:component>

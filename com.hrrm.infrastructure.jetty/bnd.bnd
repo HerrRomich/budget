@@ -1,0 +1,22 @@
+-buildpath: \
+	osgi.cmpn;version=7.0,\
+	osgi.annotation;version=7.0,\
+	org.apache.felix.http.jetty
+
+-testpath: \
+	${junit}
+
+Bundle-Version: 1.0.0.${tstamp}
+
+-runrequires: \
+	osgi.identity;filter:='(osgi.identity=org.eclipse.equinox.http.jetty)',\
+	osgi.identity;filter:='(osgi.identity=org.eclipse.equinox.http.servlet)'
+	
+Require-Capability: osgi.extender; \
+  filter := "(&(osgi.extender=osgi.configurator) \
+              (version>=1.0)(!(version>=2.0)))"
+
+-includeresource: \
+    etc=etc, \
+    OSGI-INF=OSGI-INF
+Export-Package: com.hrrm.jetty

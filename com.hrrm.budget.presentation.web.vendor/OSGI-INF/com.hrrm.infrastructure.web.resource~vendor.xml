@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.hrrm.infrastructure.web.resource~vendor">
+  <implementation class="java.lang.Object"/>
+  <service scope="prototype">
+    <provide interface="com.hrrm.infrastructure.web.WebResource"/>
+  </service>
+  <property name="osgi.http.whiteboard.resource.prefix" type="String" value="/WEB-CONTENT"/>
+  <property name="osgi.http.whiteboard.resource.pattern" type="String" value="/vendor/*"/>
+  <property name="osgi.http.whiteboard.context.select" type="String" value="(osgi.http.whiteboard.context.name=com.hrrm.budget.webapp)"/>
+</scr:component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.4.0" name="com.hrrm.infrastructure.web.internal.WebContentContextHelper" init="1">
+  <implementation class="com.hrrm.infrastructure.web.internal.WebContentContextHelper"/>
+  <service scope="bundle">
+    <provide interface="org.osgi.service.http.context.ServletContextHelper"/>
+  </service>
+  <reference name="context" interface="org.osgi.framework.BundleContext" parameter="0"/>
+  <property name="osgi.http.whiteboard.context.name" type="String" value="com.ebase.eox.appcontent"/>
+  <property name="osgi.http.whiteboard.context.path" type="String" value="/"/>
+</scr:component>

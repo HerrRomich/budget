@@ -1,0 +1,19 @@
+-resourceonly: true
+
+-includeresource: \
+    WEB-CONTENT=WEB-CONTENT,\
+    OSGI-INF=OSGI-INF
+    
+Bundle-Version: 1.0.0.${tstamp}
+
+ Require-Bundle: \
+	com.hrrm.budget.presentation.web.app,\
+	com.hrrm.budget.presentation.web.polyfills,\
+	com.hrrm.budget.presentation.web.vendor
+  
+Import-Package: \
+	com.hrrm.infrastructure.web,\
+	*
+
+Service-Component: OSGI-INF/com.hrrm.infrastructure.web.resource~home.xml
+              

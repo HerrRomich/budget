@@ -1,0 +1,76 @@
+# Configure Repositories
+-plugin.1.Central: \
+	aQute.bnd.repository.maven.provider.MavenBndRepository; \
+		releaseUrl=https://repo.maven.apache.org/maven2/; \
+		index=${.}/central.maven; \
+		name="Central"
+
+-plugin.2.Local: \
+	aQute.bnd.deployer.repository.LocalIndexedRepo; \
+		name = Local; \
+		pretty = true; \
+		local = ${build}/local
+
+-plugin.3.Templates: \
+	aQute.bnd.deployer.repository.LocalIndexedRepo; \
+		name = Templates; \
+		pretty = true; \
+		local = ${build}/templates
+
+-plugin.4.Release: \
+	aQute.bnd.deployer.repository.LocalIndexedRepo; \
+		name = Release; \
+		pretty = true; \
+		local = ${build}/release
+
+-plugin.5.Equiinox:\
+    aQute.bnd.repository.maven.provider.MavenBndRepository; \
+        releaseUrl=https://repo.maven.apache.org/maven2/; \
+        index=${build}/equinox.maven; \
+        name="Equinox"
+
+-plugin.9.Maven: \
+    aQute.bnd.repository.maven.provider.MavenBndRepository; \
+        releaseUrl=https://repo.maven.apache.org/maven2/; \
+        index=${build}/maven.maven; \
+        name="Maven"
+     
+-plugin.10.Jetty: \
+    aQute.bnd.repository.maven.provider.MavenBndRepository; \
+        releaseUrl=https://repo.maven.apache.org/maven2/; \
+        index=${build}/jetty.maven; \
+        name="Jetty"
+     
+-plugin.11.Felix: \
+    aQute.bnd.repository.maven.provider.MavenBndRepository; \
+        releaseUrl=https://repo.maven.apache.org/maven2/; \
+        index=${build}/felix.maven; \
+        name="Felix"
+     
+-plugin.12.Aries: \
+    aQute.bnd.repository.maven.provider.MavenBndRepository; \
+        releaseUrl=https://repo.maven.apache.org/maven2/; \
+        index=${build}/aries.maven; \
+        name="Aries"
+     
+-plugin.13.Eclipselink: \
+    aQute.bnd.repository.maven.provider.MavenBndRepository; \
+        releaseUrl=https://repo.maven.apache.org/maven2/; \
+        index=${build}/eclipselink.maven; \
+        name="Eclipselink"
+     
+-plugin.14.Flyway: \
+    aQute.bnd.repository.maven.provider.MavenBndRepository; \
+        releaseUrl=https://repo.maven.apache.org/maven2/; \
+        index=${build}/flywaydb.maven; \
+        name="Flyway"
+     
+-releaserepo: Release
+-baselinerepo: Release
+
+javac.source=1.8
+javac.target=1.8
+
+
+# JUnit
+junit: org.apache.servicemix.bundles.junit; version=4.12

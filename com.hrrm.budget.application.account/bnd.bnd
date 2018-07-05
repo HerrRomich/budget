@@ -1,0 +1,18 @@
+-buildpath: \
+	org.eclipse.osgi;version=3.13,\
+	osgi.cmpn;version=7.0,\
+	com.graphql-java.servlet,\
+	com.graphql-java,\
+	javax.servlet,\
+	com.hrrm.budget.domain.account;version=latest,\
+	com.hrrm.infrastructure.persistence;version=latest,\
+	org.apache.felix.converter
+
+-testpath: \
+	${junit}
+
+Bundle-Version: 1.0.0.${tstamp}
+Private-Package: \
+	com.hrrm.budget.application.account.service,\
+	com.hrrm.budget.application.account.providers
+Export-Package: com.hrrm.budget.application.account.dto

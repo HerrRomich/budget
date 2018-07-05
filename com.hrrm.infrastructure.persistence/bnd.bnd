@@ -1,0 +1,13 @@
+-buildpath: \
+	org.eclipse.osgi;version=3.13,\
+	osgi.cmpn;version=7.0,\
+	javax.persistence;version=2.1
+
+-testpath: \
+	${junit}
+
+Bundle-Version: 1.0.0.${tstamp}
+
+Export-Package: \
+	com.hrrm.infrastructure.persistence.impl,\
+	com.hrrm.infrastructure.persistence

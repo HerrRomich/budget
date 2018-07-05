@@ -1,0 +1,18 @@
+-buildpath: \
+	javax.servlet;version=3.1,\
+	org.eclipse.osgi;version=3.13,\
+	osgi.cmpn;version=7.0,\
+	osgi.annotation;version=7.0,\
+	org.apache.felix.http.jetty;version=4.0,\
+	org.apache.commons.lang3;version=3.7
+
+-testpath: \
+	${junit}
+
+Bundle-Version: 1.0.0.${tstamp}
+Private-Package: com.hrrm.infrastructure.web.internal
+Export-Package: com.hrrm.infrastructure.web
+
+-includeresource: \
+    OSGI-INF=OSGI-INF
+
