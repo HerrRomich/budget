@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MainMenuService } from './services/main-menu.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +6,7 @@ import { MainMenuService } from './services/main-menu.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'Budget';
 
-  constructor(public mainMenuService: MainMenuService) {
-    this.mainMenuService.getMainMenu();
-  }
 }

@@ -13,7 +13,7 @@ Bundle-Version: 1.0.0.${tstamp}
 	osgi.identity;filter:='(osgi.identity=org.eclipse.equinox.http.servlet)'
 	
 Require-Capability: osgi.extender; \
-  filter := "(&(osgi.extender=osgi.configurator) \
+  filter:="(&(osgi.extender=osgi.configurator)\
               (version>=1.0)(!(version>=2.0)))"
 
 -includeresource: \

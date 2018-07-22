@@ -43,10 +43,15 @@ import graphql.servlet.InstrumentationProvider;
 import graphql.servlet.NoOpInstrumentationProvider;
 
 @Component(scope = ServiceScope.PROTOTYPE, service = Servlet.class, property = {
-	HttpWhiteboardConstants.HTTP_WHITEBOARD_SERVLET_PATTERN + "=/accounts/*",
-	HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_SELECT + "=("
-		+ HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_NAME + "=com.hrrm.budget.webapp)" })
+	HttpWhiteboardConstants.HTTP_WHITEBOARD_SERVLET_PATTERN +
+	    "=/accounts/*",
+	HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_SELECT +
+	    "=(" +
+	    HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_NAME +
+	    "=com.hrrm.budget.webapp)" })
 public class AccountGraphQlServlet extends GraphQLServlet {
+
+    private static final long serialVersionUID = 1L;
 
     @Reference(cardinality = ReferenceCardinality.MULTIPLE, policyOption = ReferencePolicyOption.GREEDY, target = "(com.hrrm.graphql.provider=accounts)")
     private List<GraphQLProvider> providers;
@@ -70,12 +75,18 @@ public class AccountGraphQlServlet extends GraphQLServlet {
 	logger.info("Activated");
 
 	GraphQLObjectType.Builder accountsQueryTypeBuilder = newObject().name("AccountsQuery");
-	providers.stream().filter(GraphQLQueryProvider.class::isInstance).map(GraphQLQueryProvider.class::cast)
-		.map(GraphQLQueryProvider::getQueries).flatMap(Collection::stream)
-		.forEach(accountsQueryTypeBuilder::field);
-	Set<GraphQLType> types = providers.stream().filter(GraphQLTypesProvider.class::isInstance)
-		.map(GraphQLTypesProvider.class::cast).map(GraphQLTypesProvider::getTypes).flatMap(Collection::stream)
-		.collect(Collectors.toSet());
+	providers.stream()
+	    .filter(GraphQLQueryProvider.class::isInstance)
+	    .map(GraphQLQueryProvider.class::cast)
+	    .map(GraphQLQueryProvider::getQueries)
+	    .flatMap(Collection::stream)
+	    .forEach(accountsQueryTypeBuilder::field);
+	Set<GraphQLType> types = providers.stream()
+	    .filter(GraphQLTypesProvider.class::isInstance)
+	    .map(GraphQLTypesProvider.class::cast)
+	    .map(GraphQLTypesProvider::getTypes)
+	    .flatMap(Collection::stream)
+	    .collect(Collectors.toSet());
 	schemaProvider = new DefaultGraphQLSchemaProvider(
 		newSchema().query(accountsQueryTypeBuilder.build()).build(types));
     }

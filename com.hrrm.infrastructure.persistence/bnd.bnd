@@ -1,7 +1,7 @@
 -buildpath: \
 	org.eclipse.osgi;version=3.13,\
 	osgi.cmpn;version=7.0,\
-	javax.persistence;version=2.1
+	javax.persistence
 
 -testpath: \
 	${junit}

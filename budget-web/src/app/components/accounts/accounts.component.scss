@@ -1,7 +1,26 @@
+app-accounts {
+    flex-direction: column;
+    flex: 1;
+}
+
 .mat-tab-group {
     min-width: 0;
 }
 
 .mat-tab-header {
     border: none;
+}
+
+.fab-container {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+}
+
+table {
+    width: 100%;
+}
+
+mat-header-row {
+    height: 30px !important;
 }

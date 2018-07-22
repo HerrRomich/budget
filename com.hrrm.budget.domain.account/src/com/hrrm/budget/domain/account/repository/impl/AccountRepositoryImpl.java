@@ -7,11 +7,11 @@ import com.hrrm.budget.domain.account.Account;
 import com.hrrm.budget.domain.account.repository.AccountRepository;
 
 @Component(service = AccountRepository.class, scope = ServiceScope.SINGLETON)
-public class AccountRepositoryImpl extends AccountBasicJpaRepository<Account> implements AccountRepository {
+public class AccountRepositoryImpl extends AccountBaseJpaRepository<Account> implements AccountRepository {
 
-	@Override
-	protected Class<Account> getEntityClass() {
-		return Account.class;
-	}
+    @Override
+    protected Class<Account> getEntityClass() {
+	return Account.class;
+    }
 
 }
