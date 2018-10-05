@@ -2,6 +2,7 @@
 .gradle/
 **/generated/
 .metadata
+.sonarlint
 
 bin/
 bin_test/

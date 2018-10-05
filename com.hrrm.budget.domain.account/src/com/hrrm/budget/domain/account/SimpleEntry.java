@@ -11,7 +11,7 @@ public class SimpleEntry extends AccountEntry {
     @Column(name = "category_id")
     private Integer categoryId;
     
-    @Column(name = "countpart_id")
+    @Column(name = "counterparty_id")
     private Integer counterpartyId;
     
 }

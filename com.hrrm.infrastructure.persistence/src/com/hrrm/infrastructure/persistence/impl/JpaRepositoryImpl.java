@@ -11,38 +11,34 @@ import com.hrrm.infrastructure.persistence.JpaRepository;
 
 public abstract class JpaRepositoryImpl<T, ID> implements JpaRepository<T, ID> {
 
-	protected abstract Class<T> getEntityClass();
+    protected abstract Class<T> getEntityClass();
 
-	protected abstract EntityManager getEntityManager();
+    protected abstract EntityManager getEntityManager();
 
-	protected abstract TransactionControl getTxControl();
+    protected abstract TransactionControl getTxControl();
 
-	@Override
-	public List<T> findAll() {
-		return getTxControl().notSupported(() -> {
-			return getFindAllQuery().getResultList();
-		});
-	}
+    @Override
+    public List<T> findAll() {
+        return getTxControl().required(() -> getFindAllQuery().getResultList());
+    }
 
-	private TypedQuery<T> getFindAllQuery() {
-		EntityManager entityManager = getEntityManager();
-		CriteriaQuery<T> criteria = getEntityCriteriaQuery(entityManager);
-		TypedQuery<T> findAllQuery = entityManager.createQuery(criteria);
-		return findAllQuery;
-	}
+    private TypedQuery<T> getFindAllQuery() {
+        EntityManager entityManager = getEntityManager();
+        CriteriaQuery<T> criteria = getEntityCriteriaQuery(entityManager);
+        return entityManager.createQuery(criteria);
+    }
 
-	private CriteriaQuery<T> getEntityCriteriaQuery(EntityManager entityManager) {
-		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<T> criteria = criteriaBuilder.createQuery(getEntityClass());
-		return criteria;
-	}
+    private CriteriaQuery<T> getEntityCriteriaQuery(EntityManager entityManager) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        return criteriaBuilder.createQuery(getEntityClass());
+    }
 
-	@Override
-	public Optional<T> find(ID id) {
-		return getTxControl().supports(() -> {
-			EntityManager entityManager = getEntityManager();
-			return Optional.ofNullable(entityManager.find(getEntityClass(), id));
-		});
-	}
+    @Override
+    public Optional<T> find(ID id) {
+        return getTxControl().supports(() -> {
+            EntityManager entityManager = getEntityManager();
+            return Optional.ofNullable(entityManager.find(getEntityClass(), id));
+        });
+    }
 
 }

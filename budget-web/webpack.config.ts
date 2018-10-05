@@ -14,7 +14,7 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, './output/home'),
-    filename: '[name]/[name].js'
+    filename: '[name]/[name][hash].js'
   },
   resolve: {
     extensions: ['.ts', '.js', '.css', '.scss' ]

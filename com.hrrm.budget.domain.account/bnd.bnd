@@ -7,11 +7,11 @@
 	org.apache.commons.lang3;version=3.7,\
 	org.apache.servicemix.specs.json-api-1.1;version=2.9,\
 	org.ops4j.pax.jdbc.pool.common;version=1.3,\
-	org.ops4j.pax.jdbc.config;version=1.3,\
 	org.apache.aries.jpa.container;version=2.7,\
 	tx-control-provider-jpa-local,\
 	org.apache.aries.jpa.eclipselink.adapter,\
-	org.eclipse.persistence.jpa
+	org.eclipse.persistence.jpa,\
+	tx-control-provider-jpa-common
 
 -testpath: \
 	${junit}

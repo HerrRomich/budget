@@ -57,7 +57,7 @@ public class AccountProvider implements GraphQLQueryProvider, GraphQLTypesProvid
 
     private GraphQLFieldDefinition buildAccountDefinition() {
 	return newFieldDefinition().name("accounts")
-	    .type(list(typeRef("Account")))
+	    .type(list(typeRef(ACCOUNT_TYPE_NAME)))
 	    .argument(newArgument().name("id").type(GraphQLID))
 	    .dataFetcher(this::fetchAccountData)
 	    .build();
@@ -68,7 +68,7 @@ public class AccountProvider implements GraphQLQueryProvider, GraphQLTypesProvid
 	    Integer id = Integer.valueOf(environment.getArgument("id"));
 	    return accountRepository.find(id)
 		.map(ag -> Stream.of(ag).collect(Collectors.toList()))
-		.orElseThrow(() -> new NotFoundException());
+		.orElseThrow(NotFoundException::new);
 	} else {
 	    return accountRepository.findAll();
 	}
